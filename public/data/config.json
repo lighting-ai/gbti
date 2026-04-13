@@ -46,9 +46,18 @@
   },
   "footer": {
     "links": [
-      { "label": "SBTI 测试", "href": "https://pingfanfan.github.io/SBTI/" },
-      { "label": "GBTI 测试", "href": "/" },
-      { "label": "GitHub 仓库", "href": "#" }
+      {
+        "label": "SBTI 测试",
+        "href": "https://gbti.fundpulse.shop"
+      },
+      {
+        "label": "GBTI 测试",
+        "href": "https://gbti.fundpulse.shop"
+      },
+      {
+        "label": "GitHub 仓库",
+        "href": "https://github.com/lighting-ai/gbti.git"
+      }
     ]
   },
   "heroFeaturedTypes": [
