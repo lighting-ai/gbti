@@ -48,14 +48,14 @@
     "links": [
       {
         "label": "SBTI 测试",
-        "href": "https://gbti.fundpulse.shop"
+        "href": "https://sbti.fundpulse.shop"
       },
       {
         "label": "GBTI 测试",
         "href": "https://gbti.fundpulse.shop"
       },
       {
-        "label": "GitHub 仓库",
+        "label": "GitHub",
         "href": "https://github.com/lighting-ai/gbti.git"
       }
     ]

@@ -1,5 +1,3 @@
-
-
 # GBTI 股民人格测试
 
 创意是来自：小红书用户「拿住股票一百年不变」，我只是让 AI 自己 Vibe Coding 一个出来。
@@ -15,7 +13,7 @@
 ## 参考与来源
 
 - **上游参考实现（本仓库演进所基于的公开项目）**：[wenyuanw/gbti-test-web](https://github.com/wenyuanw/gbti-test-web)  
-若你 fork 或二次发布，建议保留对原作者仓库的说明与许可证要求。
+  若你 fork 或二次发布，建议保留对原作者仓库的说明与许可证要求。
 - **SBTI 娱乐向人格测试（题目与算法文化）**：[UnluckyNinja/SBTI-test](https://github.com/UnluckyNinja/SBTI-test) · 线上 [sbti.unun.dev](https://sbti.unun.dev) · 原作者 [B站@蛆肉儿串儿](https://www.bilibili.com/video/BV1LpDHByET6/)
 - **工程结构参考（Vite + `data/` JSON + `src/` 拆分）**：[pingfanfan/SBTI](https://github.com/pingfanfan/SBTI)
 
@@ -44,13 +42,13 @@ pnpm build
 
 本项目是 **纯前端静态站**（Vite 构建出 `dist/`）。在 Cloudflare 上有两种常见接法，**不要混用配置**：
 
-| | **Cloudflare Pages（推荐多数场景）** | **Cloudflare Workers + Static Assets（本仓库 `workers/`）** |
-|---|--------------------------------------|-------------------------------------------------------------|
-| **是什么** | 专门托管静态文件，直接把 **`dist/`** 发布到 CDN | 先有一个 **Worker** 脚本作为入口，再通过 **Static Assets** 把 **`dist/`** 挂上去 |
-| **仓库里的 Worker 要不要用？** | **不用**。可忽略 `workers/gbti-worker/`，不影响站点 | **要用**。部署的就是这个 Worker + 资源 |
-| **`workers/gbti-worker` 里在干什么？** | — | `wrangler.toml` 把静态目录指到仓库根的 **`dist/`**；`worker.js` 对请求路径做简单白名单（只允许首页、静态资源、`/data/` 等），再交给 Assets 返回文件 |
-| **控制台里要不要填「部署命令 / Wrangler」？** | **不要填**（或留空）。只需 **构建命令** + **输出目录 `dist`**，由 Pages 自动发布 | **要填**。必须在构建产出 `dist/` 之后执行 `wrangler deploy`，且 **必须带 `--config`**（见下表） |
-| **典型命令** | 构建：`pnpm install && pnpm build` | 构建同上；部署：`npx wrangler deploy --config workers/gbti-worker/wrangler.toml` |
+|                                               | **Cloudflare Pages（推荐多数场景）**                                             | **Cloudflare Workers + Static Assets（本仓库 `workers/`）**                                                                                         |
+| --------------------------------------------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **是什么**                                    | 专门托管静态文件，直接把 **`dist/`** 发布到 CDN                                  | 先有一个 **Worker** 脚本作为入口，再通过 **Static Assets** 把 **`dist/`** 挂上去                                                                    |
+| **仓库里的 Worker 要不要用？**                | **不用**。可忽略 `workers/gbti-worker/`，不影响站点                              | **要用**。部署的就是这个 Worker + 资源                                                                                                              |
+| **`workers/gbti-worker` 里在干什么？**        | —                                                                                | `wrangler.toml` 把静态目录指到仓库根的 **`dist/`**；`worker.js` 对请求路径做简单白名单（只允许首页、静态资源、`/data/` 等），再交给 Assets 返回文件 |
+| **控制台里要不要填「部署命令 / Wrangler」？** | **不要填**（或留空）。只需 **构建命令** + **输出目录 `dist`**，由 Pages 自动发布 | **要填**。必须在构建产出 `dist/` 之后执行 `wrangler deploy`，且 **必须带 `--config`**（见下表）                                                     |
+| **典型命令**                                  | 构建：`pnpm install && pnpm build`                                               | 构建同上；部署：`npx wrangler deploy --config workers/gbti-worker/wrangler.toml`                                                                    |
 
 **结论**：
 
@@ -132,4 +130,3 @@ pnpm dev:worker
 ├── .env.example
 └── package.json
 ```
-
