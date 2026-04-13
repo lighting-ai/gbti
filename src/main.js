@@ -191,10 +191,6 @@ async function init() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  const quiz = createQuiz(questions, config, {
-    dimensionMeta: dimensions.meta,
-  });
-
   function runResult() {
     const answers = quiz.getAnswers();
     const rawScores = calcDimensionScores(
@@ -214,16 +210,15 @@ async function init() {
     showScreen("result");
   }
 
+  const quiz = createQuiz(questions, config, {
+    dimensionMeta: dimensions.meta,
+    onComplete: runResult,
+  });
+
   document.getElementById("startBtn").addEventListener("click", () => {
     quiz.start();
     showScreen("test");
   });
-
-  document
-    .getElementById("backIntroBtn")
-    .addEventListener("click", () => showScreen("intro"));
-
-  document.getElementById("submitBtn").addEventListener("click", runResult);
 
   document.getElementById("restartBtn").addEventListener("click", () => {
     quiz.start();

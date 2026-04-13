@@ -186,7 +186,7 @@ export function initShareCardActions(opts) {
         closeMenu()
         if (action === 'share-full') await runMenuAction(() => doShareFull())
         else if (action === 'save-full') await runMenuAction(() => doSaveFull())
-        else if (action === 'save-top') await runMenuAction(() => doSaveTop())
+        else if (action === 'share-top') await runMenuAction(() => doShareTop())
       })
     })
 
@@ -240,13 +240,6 @@ export function initShareCardActions(opts) {
     downloadBlob(blob, `GBTI-${baseName()}-完整-${dateStr()}.png`)
   }
 
-  async function doSaveTop() {
-    const root = opts.getRootTop()
-    if (!root) throw new Error('找不到角色卡片')
-    const blob = await captureShareCardPng(root)
-    downloadBlob(blob, `GBTI-${baseName()}-角色卡片-${dateStr()}.png`)
-  }
-
   async function doShareFull() {
     if (!canSharePngFile()) {
       alert('当前浏览器不支持「分享图片」，请使用「保存结果长图」后从相册分享。')
@@ -260,6 +253,28 @@ export function initShareCardActions(opts) {
     const payload = { files: [file], title: 'GBTI 股民人格测试结果', text: '我的 GBTI 测试结果' }
     if (!navigator.canShare(payload)) {
       alert('当前环境无法分享该图片，请改用「保存结果长图」。')
+      return
+    }
+    await navigator.share(payload)
+  }
+
+  async function doShareTop() {
+    if (!canSharePngFile()) {
+      alert('当前浏览器不支持「分享图片」，请使用「保存结果长图」后自行裁剪，或换用系统浏览器。')
+      return
+    }
+    const root = opts.getRootTop()
+    if (!root) throw new Error('找不到角色卡片')
+    const blob = await captureShareCardPng(root)
+    const filename = `GBTI-${baseName()}-角色卡片.png`
+    const file = new File([blob], filename, { type: 'image/png' })
+    const payload = {
+      files: [file],
+      title: 'GBTI 股民人格 · 角色卡片',
+      text: '我的 GBTI 测试结果',
+    }
+    if (!navigator.canShare(payload)) {
+      alert('当前环境无法分享该图片，可改用「保存结果长图」。')
       return
     }
     await navigator.share(payload)
