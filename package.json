@@ -3,13 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "description": "GBTI 股民人格测试（娱乐向）",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lighting-ai/gbti.git"
-  },
-  "bugs": {
-    "url": "https://github.com/lighting-ai/gbti/issues"
-  },
   "type": "module",
   "packageManager": "pnpm@9.12.3",
   "scripts": {

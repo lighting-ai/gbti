@@ -143,7 +143,8 @@ function applyFooterLinks(config) {
     .map((item, i) => {
       const sep = i > 0 ? '<span class="footer-sep">·</span>' : ''
       const href = item.href ?? '#'
-      const internal = href === '/' || (href.startsWith('/') && !href.startsWith('//'))
+      const internal =
+        href === '/' || href === '#' || (href.startsWith('/') && !href.startsWith('//'))
       const target = internal ? '_self' : '_blank'
       const rel = internal ? '' : 'noopener noreferrer'
       const relAttr = rel ? ` rel="${rel}"` : ''

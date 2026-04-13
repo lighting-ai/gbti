@@ -14,19 +14,19 @@
 
 - 本项目仅供娱乐，不构成投资建议。
 
-## 代码托管（lighting-ai 组织）
+## 代码托管与推送
 
-本仓库建议放在 GitHub 组织 **[lighting-ai](https://github.com/lighting-ai)** 下，默认远程地址为：
+`package.json` **不**写死 `repository` / `bugs`，fork 后无需改依赖元数据。
 
-`https://github.com/lighting-ai/gbti.git`
-
-若你在组织里使用的仓库名不是 `gbti`，请把 `package.json` 里的 `repository` / `bugs` 改成实际地址，并更新 `git remote`。
-
-在 GitHub 上 **新建空仓库**（不要勾选自动添加 README）后，本地执行：
+在 GitHub 上新建**空仓库**（不要勾选自动添加 README），将本地 `origin` 指向你的仓库后推送：
 
 ```bash
+git remote add origin https://github.com/<org-or-user>/<repo>.git
+# 若已有 origin：git remote set-url origin https://github.com/<org-or-user>/<repo>.git
 git push -u origin main
 ```
+
+若由组织 **[lighting-ai](https://github.com/lighting-ai)** 维护主仓库，在组织下创建同名或任意名称的仓库后按上式推送即可。
 
 ## 参考与来源
 
@@ -46,7 +46,7 @@ git push -u origin main
 | 位置 | 说明 |
 |------|------|
 | `index.html` | `og:image` / `twitter:image` 使用**相对路径** `/image/og.png`，随访问时的站点域名生效。 |
-| `public/data/config.json` | 页脚「GBTI 测试」为 `"/"`，始终指向**当前站点根路径**；「GitHub 仓库」指向上游参考仓库，fork 后可改成你自己的仓库地址。 |
+| `public/data/config.json` | 页脚「GBTI 测试」为 `"/"`；「GitHub 仓库」默认 `href` 为 `#`，发布时可在该文件中改成**你的**仓库 URL。 |
 | 可选 `.env` | 若你希望运行时补全 **canonical、`og:url`、分享图绝对 URL**（少数场景需要），可复制 `.env.example` 为 `.env` / `.env.production`，设置 `VITE_SITE_ORIGIN`（不要末尾斜杠）。**不设置也完全可部署。** |
 
 **示例（仅作文档说明，不是仓库默认值）：** 若你计划在 **`https://gbti.fundpulse.shop`** 上线，可在构建环境配置：
