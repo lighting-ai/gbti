@@ -15,5 +15,8 @@
   "devDependencies": {
     "vite": "^6.0.0",
     "wrangler": "^3.80.0"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1"
   }
 }

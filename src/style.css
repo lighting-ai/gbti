@@ -445,6 +445,67 @@
     .result-wrap {
       margin-top: 18px;
       padding: 20px;
+      position: relative;
+    }
+
+    .result-share-fab {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 20;
+    }
+
+    .share-menu-trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--accent);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: background 0.16s ease, transform 0.12s ease;
+    }
+
+    .share-menu-trigger:hover {
+      background: var(--soft);
+    }
+
+    .share-menu-trigger:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .share-menu-panel {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      min-width: 188px;
+      padding: 6px 0;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: 0 12px 28px rgba(40, 63, 50, 0.12);
+    }
+
+    .share-menu-item {
+      display: block;
+      width: 100%;
+      padding: 10px 14px;
+      border: 0;
+      background: transparent;
+      text-align: left;
+      font-size: 14px;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .share-menu-item:hover {
+      background: var(--soft);
     }
 
     .topbar {
@@ -590,6 +651,9 @@
       gap: 10px;
       flex-wrap: wrap;
       margin-bottom: 14px;
+      /* 仅标题行与右上角悬浮分享按钮错开，不缩小整张卡片的正文区宽度 */
+      padding-right: 30px;
+      box-sizing: border-box;
     }
 
     .share-brand {
@@ -922,11 +986,36 @@
     .dim-item-score { color: var(--muted); font-size: 12px; }
     .dim-item p { color: #45544a; font-size: 13px; line-height: 1.7; margin: 0; }
 
+    /* 导出长图根节点；分享按钮为 absolute 悬浮，不占文档流宽度 */
+    .share-card-root {
+      overflow: visible;
+      width: 100%;
+    }
+
     .result-actions {
       margin-top: 16px;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* 底部操作区：约一半视觉体量，便于拇指区不挤占过多 */
+    .result-actions--compact {
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .result-actions--compact .btn-compact {
+      padding: 6px 10px;
+      font-size: 12px;
+      line-height: 1.35;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .result-actions--compact .btn-compact.btn-primary {
+      box-shadow: 0 6px 14px rgba(79, 109, 88, 0.18);
     }
 
     .site-footer {
@@ -1041,6 +1130,10 @@
       .reason-value { font-size: 20px; }
       .reason-judge { font-size: 12px; }
       .result-actions { justify-content: center; }
+      .result-actions--compact .btn-compact {
+        padding: 5px 8px;
+        font-size: 11px;
+      }
       .site-footer {
         padding: 14px 0 8px;
         gap: 10px;

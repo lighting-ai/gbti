@@ -1,6 +1,7 @@
 import { calcDimensionScores, scoresToLevels, determineGbResult } from './engine.js'
 import { createQuiz } from './quiz.js'
 import { renderResultView } from './result.js'
+import { initShareCardActions } from './shareCard.js'
 import './style.css'
 
 /**
@@ -211,6 +212,16 @@ async function init() {
 
   initHeroSpotlight(config, typeByCode)
   applyFooterLinks(config)
+
+  initShareCardActions({
+    getRootFull: () => document.getElementById('shareCardRoot'),
+    getRootTop: () => document.getElementById('resultTopBlock'),
+    getBaseFileName: () => {
+      const cn = document.getElementById('resultTypeCn')?.textContent?.trim()
+      const en = document.getElementById('resultTypeEn')?.textContent?.trim()
+      return cn || en || 'result'
+    },
+  })
 }
 
 init().catch((err) => {
