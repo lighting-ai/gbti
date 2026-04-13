@@ -1,0 +1,71 @@
+{
+  "scoring": {
+    "levelThresholds": {
+      "L": [
+        2,
+        3
+      ],
+      "M": [
+        4,
+        4
+      ],
+      "H": [
+        5,
+        6
+      ]
+    },
+    "maxDistance": 30,
+    "fallbackThreshold": 55
+  },
+  "marginGate": {
+    "questionId": "margin_gate_q1",
+    "followUpQuestionId": "margin_gate_q2",
+    "insertFollowUpWhenValue": 3
+  },
+  "allIn": {
+    "questionId": "margin_gate_q2",
+    "triggerValue": 2,
+    "typeCode": "TEN_JQKA"
+  },
+  "fallback": {
+    "typeCode": "WATCHER"
+  },
+  "display": {
+    "allInMode": {
+      "kicker": "隐藏人格已激活",
+      "badge": "匹配度 100% · 梭哈冲动已接管",
+      "sub": "你在关键题中表现出极强进攻倾向，本次结果优先归档为「梭哈 King」。"
+    },
+    "fallbackMode": {
+      "kicker": "系统稳健兜底",
+      "badgeTemplate": "标准人格库最高匹配仅 {similarity}%",
+      "sub": "你的风格较混合，系统先归档为 WATCHER（观望者）。"
+    },
+    "funNoteNormal": "本测试仅供娱乐，不构成投资建议。请根据自身风险承受能力进行决策。",
+    "funNoteSpecial": "娱乐结果触发了特殊逻辑，请理性看待。投资有风险，入市需谨慎。"
+  },
+  "footer": {
+    "links": [
+      { "label": "SBTI 测试", "href": "https://pingfanfan.github.io/SBTI/" },
+      { "label": "GBTI 测试", "href": "/" },
+      { "label": "GitHub 仓库", "href": "https://github.com/lighting-ai/gbti" }
+    ]
+  },
+  "heroFeaturedTypes": [
+    {
+      "code": "TEN_JQKA",
+      "title": "梭哈King",
+      "copy": "高进攻型交易风格代表，适合对照查看你的情绪与仓位管理偏好。"
+    },
+    {
+      "code": "DEFENDER_A",
+      "title": "大A守望者",
+      "copy": "偏规则和节奏的稳健风格代表，强调长期生存与风险控制。"
+    },
+    {
+      "code": "TD_MASTER",
+      "title": "逃顶大师",
+      "copy": "重视兑现和回撤管理，擅长在波动中优先保护账户曲线。"
+    }
+  ]
+}

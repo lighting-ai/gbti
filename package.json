@@ -1,0 +1,26 @@
+{
+  "name": "gbti",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GBTI 股民人格测试（娱乐向）",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lighting-ai/gbti.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lighting-ai/gbti/issues"
+  },
+  "type": "module",
+  "packageManager": "pnpm@9.12.3",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "dev:worker": "pnpm build && wrangler dev --config workers/gbti-worker/wrangler.toml --port 8788",
+    "deploy": "pnpm build && wrangler deploy --config workers/gbti-worker/wrangler.toml"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "wrangler": "^3.80.0"
+  }
+}
